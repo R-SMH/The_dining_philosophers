@@ -1,3 +1,11 @@
+// Name: Sehat Mahde, Shreyastha Banik
+// Date: 5/8/2026
+// Description: This Program is an implementation of the classic Dining Philosophers problem using threads and semaphores in C. 
+// The program simulates a group of philosophers who alternately think and eat. 
+// Each philosopher needs two forks to eat, and the program ensures that they can eat without causing a deadlock. 
+// The number of philosophers and the number of times each philosopher eats can be specified as command-line arguments. 
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>

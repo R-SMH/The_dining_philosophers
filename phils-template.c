@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <time.h>
 
+
 int numOfPhils; // number of phils, passed in as argument[1]
 int numOfTimesToEat; // number of times to eat each, passed in as argument[2]
 sem_t *forks;
@@ -18,8 +19,9 @@ void test(); // used to check state of philsopher and state of each Fork
 
 void pickupFork(); // waits to grab forks for philospher (denotes when philospher is hungry)
 void putDownFork(); // puts forks back down (denotes when philospher is thinking)
-void *philosopher(); // must be a pointer when working with threading
-                     // determines first action of a philospher when thread is created
+
+void *philosopher(void *arg); // must be a pointer when working with threading
+                                // determines first action of a philospher when thread is created
 
 int main(int argc, char *argv[]) {
 
@@ -42,3 +44,6 @@ int main(int argc, char *argv[]) {
     free(phils);
     return 0;
 }
+
+
+

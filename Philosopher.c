@@ -12,7 +12,7 @@
 
 
 int numOfPhils; // number of phils, passed in as argument[1]
-int numOfTimesToEat; // number of times to eat each, passed in as argument[2]
+int num_of_eating_times; // number of times to eat each, passed in as argument[2]
 sem_t *forks;
 sem_t printLock;
 int *state;
@@ -48,7 +48,6 @@ int leftFork(int id) {
 int rightFork(int id) {
     return id;
 }
-
 
 void pickupForks(int id) {
     int left = leftFork(id);
@@ -86,7 +85,7 @@ void putDownForks(int id) {
 void *philosopher(void *arg) {
     int id = *(int *)arg;
 
-    for (int i = 0; i < numOfTimesToEat; i++) {
+    for (int i = 0; i < num_of_eating_times; i++) {
 
         state[id] = THINKING;
         printState(id);
@@ -96,7 +95,7 @@ void *philosopher(void *arg) {
         putDownForks(id);
     }
 
-    printf("Philosopher %d is done eating %d times\n", id, numOfTimesToEat);
+    printf("Philosopher %d is done eating %d times\n", id, num_of_eating_times);
     return NULL;
 }
 
@@ -110,10 +109,10 @@ int main(int argc, char *argv[]) {
     }
 
     numOfPhils = atoi(argv[1]);
-    numOfTimesToEat = atoi(argv[2]);
+    num_of_eating_times = atoi(argv[2]);
 
     // error handling: if number of philosopher is less than 2 and they are not allowed to eat
-    if (numOfPhils <= 1 || numOfTimesToEat <= 0) {
+    if (numOfPhils <= 1 || num_of_eating_times <= 0) {
         printf("Error: number of philosophers must be more than 1 and times to eat should be positive.\n");
         return 1;
     }
